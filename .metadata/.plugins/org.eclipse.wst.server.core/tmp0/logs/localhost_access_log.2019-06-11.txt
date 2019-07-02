@@ -1,0 +1,14 @@
+127.0.0.1 - - [11/Jun/2019:13:31:25 +0800] "GET / HTTP/1.1" 404 1036
+0:0:0:0:0:0:0:1 - - [11/Jun/2019:13:31:35 +0800] "GET /struts/test/hellow.action HTTP/1.1" 404 1061
+0:0:0:0:0:0:0:1 - - [11/Jun/2019:13:31:37 +0800] "GET /favicon.ico HTTP/1.1" 404 1047
+0:0:0:0:0:0:0:1 - - [11/Jun/2019:13:32:26 +0800] "GET /struts2_day01_web/ HTTP/1.1" 404 1054
+0:0:0:0:0:0:0:1 - - [11/Jun/2019:13:36:21 +0800] "GET /struts2_day01_web/login.jsp HTTP/1.1" 404 1063
+127.0.0.1 - - [11/Jun/2019:13:40:29 +0800] "GET / HTTP/1.1" 404 1036
+0:0:0:0:0:0:0:1 - - [11/Jun/2019:13:42:03 +0800] "GET /struts2_day01_web/login.jsp HTTP/1.1" 404 1063
+127.0.0.1 - - [11/Jun/2019:13:44:45 +0800] "GET / HTTP/1.1" 404 1036
+0:0:0:0:0:0:0:1 - - [11/Jun/2019:13:44:47 +0800] "GET /struts2_day01_web/login.jsp HTTP/1.1" 200 2875
+0:0:0:0:0:0:0:1 - - [11/Jun/2019:13:44:47 +0800] "GET /struts2_day01_web/images/login_button.gif HTTP/1.1" 200 1559
+0:0:0:0:0:0:0:1 - - [11/Jun/2019:13:44:47 +0800] "GET /struts2_day01_web/images/login_3.jpg HTTP/1.1" 200 17895
+0:0:0:0:0:0:0:1 - - [11/Jun/2019:13:44:47 +0800] "GET /struts2_day01_web/images/login_2.jpg HTTP/1.1" 200 89854
+0:0:0:0:0:0:0:1 - - [11/Jun/2019:13:44:47 +0800] "GET /struts2_day01_web/images/login_1.gif HTTP/1.1" 200 9409
+0:0:0:0:0:0:0:1 - - [11/Jun/2019:13:45:15 +0800] "POST /struts2_day01_web/customerlogin.action HTTP/1.1" 404 1161

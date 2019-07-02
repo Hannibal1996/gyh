@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.littlecat.dao.HistoryRecordMapper">
+  <resultMap id="BaseResultMap" type="com.littlecat.entity.HistoryRecord">
+    <id column="h_id" jdbcType="VARCHAR" property="hId" />
+    <result column="u_id" jdbcType="VARCHAR" property="uId" />
+    <result column="p_id" jdbcType="VARCHAR" property="pId" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <association property="product" select="com.littlecat.dao.ProductMapper.selectByPrimaryKey"
+	    	column="pid">
+	</association>
+  </resultMap>
+  <sql id="Base_Column_List">
+    h_id, u_id, p_id, time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from history_record
+    where h_id = #{hId,jdbcType=VARCHAR}
+  </select>
+  
+    <select id="hrCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select 
+    count(*)
+    from history_record
+    where u_id = #{uid,jdbcType=VARCHAR}
+  </select>
+   <select id="findByUid"  resultMap="BaseResultMap">
+    select 
+    *
+    from history_record a,product b
+    where u_id = #{0,jdbcType=VARCHAR}
+    and a.p_id=b.pid
+    ORDER BY a.time desc
+     limit #{1},#{2}; 
+  </select>
+  <select id="findHRByPidUid"   resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from history_record
+    where p_id = #{0,jdbcType=VARCHAR}
+    and u_id=#{1,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from history_record
+    where h_id = #{hId,jdbcType=VARCHAR}
+  </delete>
+   <delete id="deleteByuid" parameterType="java.lang.String">
+    delete from history_record
+    where u_id = #{uid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.littlecat.entity.HistoryRecord">
+    insert into history_record (h_id, u_id, p_id, 
+      time)
+    values (#{hId,jdbcType=VARCHAR}, #{uId,jdbcType=VARCHAR}, #{pId,jdbcType=VARCHAR}, 
+      #{time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.littlecat.entity.HistoryRecord">
+    insert into history_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="hId != null">
+        h_id,
+      </if>
+      <if test="uId != null">
+        u_id,
+      </if>
+      <if test="pId != null">
+        p_id,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="hId != null">
+        #{hId,jdbcType=VARCHAR},
+      </if>
+      <if test="uId != null">
+        #{uId,jdbcType=VARCHAR},
+      </if>
+      <if test="pId != null">
+        #{pId,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.littlecat.entity.HistoryRecord">
+    update history_record
+    <set>
+      <if test="uId != null">
+        u_id = #{uId,jdbcType=VARCHAR},
+      </if>
+      <if test="pId != null">
+        p_id = #{pId,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where h_id = #{hId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.littlecat.entity.HistoryRecord">
+    update history_record
+    set u_id = #{uId,jdbcType=VARCHAR},
+      p_id = #{pId,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP}
+    where h_id = #{hId,jdbcType=VARCHAR}
+  </update>
+</mapper>

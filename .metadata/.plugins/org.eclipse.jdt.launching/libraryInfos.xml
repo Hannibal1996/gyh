@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<libraryInfos>
+<libraryInfo home="G:\jdk" version="1.8.0_181">
+<bootpath>
+<entry path="G:\jdk\jre\lib\resources.jar"/>
+<entry path="G:\jdk\jre\lib\rt.jar"/>
+<entry path="G:\jdk\jre\lib\sunrsasign.jar"/>
+<entry path="G:\jdk\jre\lib\jsse.jar"/>
+<entry path="G:\jdk\jre\lib\jce.jar"/>
+<entry path="G:\jdk\jre\lib\charsets.jar"/>
+<entry path="G:\jdk\jre\lib\jfr.jar"/>
+<entry path="G:\jdk\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="G:\jdk\jre\lib\ext"/>
+<entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="G:\jdk\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="G:\jdk\jre" version="1.8.0_181">
+<bootpath>
+<entry path="G:\jdk\jre\lib\resources.jar"/>
+<entry path="G:\jdk\jre\lib\rt.jar"/>
+<entry path="G:\jdk\jre\lib\sunrsasign.jar"/>
+<entry path="G:\jdk\jre\lib\jsse.jar"/>
+<entry path="G:\jdk\jre\lib\jce.jar"/>
+<entry path="G:\jdk\jre\lib\charsets.jar"/>
+<entry path="G:\jdk\jre\lib\jfr.jar"/>
+<entry path="G:\jdk\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="G:\jdk\jre\lib\ext"/>
+<entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="G:\jdk\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="D:\BaiduNetdiskDownload\Eclipse安卓合包\eclipse" version="1.8.0_11">
+<bootpath>
+<entry path="D:\BaiduNetdiskDownload\Eclipse安卓合包\eclipse\jre\lib\resources.jar"/>
+<entry path="D:\BaiduNetdiskDownload\Eclipse安卓合包\eclipse\jre\lib\rt.jar"/>
+<entry path="D:\BaiduNetdiskDownload\Eclipse安卓合包\eclipse\jre\lib\sunrsasign.jar"/>
+<entry path="D:\BaiduNetdiskDownload\Eclipse安卓合包\eclipse\jre\lib\jsse.jar"/>
+<entry path="D:\BaiduNetdiskDownload\Eclipse安卓合包\eclipse\jre\lib\jce.jar"/>
+<entry path="D:\BaiduNetdiskDownload\Eclipse安卓合包\eclipse\jre\lib\charsets.jar"/>
+<entry path="D:\BaiduNetdiskDownload\Eclipse安卓合包\eclipse\jre\lib\jfr.jar"/>
+<entry path="D:\BaiduNetdiskDownload\Eclipse安卓合包\eclipse\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="D:\BaiduNetdiskDownload\Eclipse安卓合包\eclipse\jre\lib\ext"/>
+<entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="D:\BaiduNetdiskDownload\Eclipse安卓合包\eclipse\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+</libraryInfos>

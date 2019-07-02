@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.littlecat.dao.ProductMapper">
+  <resultMap id="BaseResultMap" type="com.littlecat.entity.Product">
+    <id column="pid" jdbcType="VARCHAR" property="pid" />
+    <result column="pname" jdbcType="VARCHAR" property="pname" />
+    <result column="market_price" jdbcType="DOUBLE" property="marketPrice" />
+    <result column="shop_price" jdbcType="DOUBLE" property="shopPrice" />
+    <result column="pimage" jdbcType="VARCHAR" property="pimage" />
+    <result column="pdate" jdbcType="DATE" property="pdate" />
+    <result column="is_hot" jdbcType="INTEGER" property="isHot" />
+    <result column="pdesc" jdbcType="VARCHAR" property="pdesc" />
+    <result column="pflag" jdbcType="INTEGER" property="pflag" />
+    <result column="cid" jdbcType="VARCHAR" property="cid" />
+   	<association property="category" select="com.littlecat.dao.CategoryMapper.selectByPrimaryKey"
+	    	column="cid">
+	</association>
+  </resultMap>
+  <sql id="Base_Column_List">
+    pid, pname, market_price, shop_price, pimage, pdate, is_hot, pdesc, pflag, cid
+  </sql>
+  <select id="findProductListByName"   resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where pname like '%${pname}%'
+     limit #{offset},#{rows}; 
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where pid = #{pid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from product
+    where pid = #{pid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.littlecat.entity.Product">
+    insert into product (pid, pname, market_price, 
+      shop_price, pimage, pdate, 
+      is_hot, pdesc, pflag, 
+      cid)
+    values (#{pid,jdbcType=VARCHAR}, #{pname,jdbcType=VARCHAR}, #{marketPrice,jdbcType=DOUBLE}, 
+      #{shopPrice,jdbcType=DOUBLE}, #{pimage,jdbcType=VARCHAR}, #{pdate,jdbcType=DATE}, 
+      #{isHot,jdbcType=INTEGER}, #{pdesc,jdbcType=VARCHAR}, #{pflag,jdbcType=INTEGER}, 
+      #{cid,jdbcType=VARCHAR})
+  </insert>
+  
+  <select id="findProductListByPage"  resultMap="BaseResultMap ">
+    select  
+    <include refid="Base_Column_List" />
+    from product
+    where cid = #{0,jdbcType=VARCHAR}
+    limit  #{1},#{2}; 
+  </select>
+  <select id="productCount"  resultType="java.lang.Integer">
+    select  
+    count(*)
+    from product
+    where cid = #{0,jdbcType=VARCHAR} 
+  </select>
+   <select id="productCountByName"  resultType="java.lang.Integer">
+    select  
+    count(*)
+    from product
+    where pname like  '%${pname}%'
+  </select>
+  <select id="findHotProducts"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where is_hot =#{isHot,jdbcType=INTEGER}
+    limit  #{offset},#{rows};    
+  </select>
+  <insert id="insertSelective" parameterType="com.littlecat.entity.Product">
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="pname != null">
+        pname,
+      </if>
+      <if test="marketPrice != null">
+        market_price,
+      </if>
+      <if test="shopPrice != null">
+        shop_price,
+      </if>
+      <if test="pimage != null">
+        pimage,
+      </if>
+      <if test="pdate != null">
+        pdate,
+      </if>
+      <if test="isHot != null">
+        is_hot,
+      </if>
+      <if test="pdesc != null">
+        pdesc,
+      </if>
+      <if test="pflag != null">
+        pflag,
+      </if>
+      <if test="cid != null">
+        cid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="pname != null">
+        #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="marketPrice != null">
+        #{marketPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="shopPrice != null">
+        #{shopPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="pimage != null">
+        #{pimage,jdbcType=VARCHAR},
+      </if>
+      <if test="pdate != null">
+        #{pdate,jdbcType=DATE},
+      </if>
+      <if test="isHot != null">
+        #{isHot,jdbcType=INTEGER},
+      </if>
+      <if test="pdesc != null">
+        #{pdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="pflag != null">
+        #{pflag,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null">
+        #{cid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.littlecat.entity.Product">
+    update product
+    <set>
+      <if test="pname != null">
+        pname = #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="marketPrice != null">
+        market_price = #{marketPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="shopPrice != null">
+        shop_price = #{shopPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="pimage != null">
+        pimage = #{pimage,jdbcType=VARCHAR},
+      </if>
+      <if test="pdate != null">
+        pdate = #{pdate,jdbcType=DATE},
+      </if>
+      <if test="isHot != null">
+        is_hot = #{isHot,jdbcType=INTEGER},
+      </if>
+      <if test="pdesc != null">
+        pdesc = #{pdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="pflag != null">
+        pflag = #{pflag,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null">
+        cid = #{cid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.littlecat.entity.Product">
+    update product
+    set pname = #{pname,jdbcType=VARCHAR},
+      market_price = #{marketPrice,jdbcType=DOUBLE},
+      shop_price = #{shopPrice,jdbcType=DOUBLE},
+      pimage = #{pimage,jdbcType=VARCHAR},
+      pdate = #{pdate,jdbcType=DATE},
+      is_hot = #{isHot,jdbcType=INTEGER},
+      pdesc = #{pdesc,jdbcType=VARCHAR},
+      pflag = #{pflag,jdbcType=INTEGER},
+      cid = #{cid,jdbcType=VARCHAR}
+    where pid = #{pid,jdbcType=VARCHAR}
+  </update>
+</mapper>

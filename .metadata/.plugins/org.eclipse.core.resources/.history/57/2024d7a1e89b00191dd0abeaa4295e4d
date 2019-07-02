@@ -1,0 +1,9 @@
+package test;
+
+public class hellotest {
+	@Test
+	public void a(){
+		
+	}
+
+}

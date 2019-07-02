@@ -1,0 +1,7 @@
+<classpath>
+  <container id="struts!org.eclipse.jst.j2ee.internal.web.container">
+    <entry id="G:/wksp/struts/WebContent/WEB-INF/lib/struts2-core-2.3.24.jar">
+      <source-attachment-path>C:/Users/高永涵/Desktop/struts2框架2016版资料/资料/struts-2.3.24-all.zip</source-attachment-path>
+    </entry>
+  </container>
+</classpath>
